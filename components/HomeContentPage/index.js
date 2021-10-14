@@ -1,14 +1,16 @@
 import Header from '../Header'
-import Filter from '../Filter'
+import Filters from '../Filters'
 import JobsList from '../JobsList'
 
 import { filterByText } from '../../utils/dataManipulation'
-import { useSearch } from './hooks'
+import { useSearch, useGroupBy } from './hooks'
 
 import { DATA } from '../../utils/propTypes'
 
 const HomeContentPage = ({ data }) => {
   const [search, onChangeSearch] = useSearch('')
+
+  const { selectedGroupOpt, groupOptions, onChangeGroup } = useGroupBy()
 
   const d = filterByText(search, data?.jobs)
   console.log(d)
@@ -17,7 +19,13 @@ const HomeContentPage = ({ data }) => {
     <div>
       <>
         <Header />
-        <Filter value={search} onChange={onChangeSearch} />
+        <Filters
+          search={search}
+          onChangeSearch={onChangeSearch}
+          selectedGroupOpt={selectedGroupOpt}
+          groupOptions={groupOptions}
+          onChangeGroup={onChangeGroup}
+        />
         <JobsList />
       </>
     </div>
