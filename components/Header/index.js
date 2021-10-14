@@ -6,7 +6,7 @@ const Header = () => (
     display="flex"
     justifyContent="center"
     alignItems="center"
-    p="md"
+    p={{ xs: 'xs', md: 'md', lg: 'xl' }}
   >
     <Image src="/wttj.svg" width={165} height={53} />
   </Box>
