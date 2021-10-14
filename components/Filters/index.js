@@ -12,32 +12,35 @@ import {
 const Filters = ({
   onChangeSearch, search, selectedGroupOpt, groupOptions, onChangeGroup,
 }) => (
-  <Box
-    display="flex"
-    justifyContent="center"
-    alignItems="center"
-    p="xl"
-    backgroundColor="light.800"
-  >
-    <div>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Text variant="h4">Our Job Opportunities</Text>
-      </Box>
-      <Box
-        justifyContent="center"
-        alignItems="center"
-        p="md"
-      >
+  <Box p="xl" backgroundColor="light.800">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Text variant="h4">Our Job Opportunities</Text>
+    </Box>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      p="md"
+      flexWrap="wrap"
+      maxWidth={500}
+      mt={0}
+      mb={0}
+      ml="auto"
+      mr="auto"
+    >
+      <Box flexGrow={1}>
         <InputText
           placeholder="Your dream job?"
           icon={<SearchIcon />}
           onChange={onChangeSearch}
           value={search}
         />
+      </Box>
+      <Box flexGrow={1}>
         <Select
           value={`Group by : ${selectedGroupOpt.label}`}
           placeholder="Group By"
@@ -46,7 +49,7 @@ const Filters = ({
           onChange={onChangeGroup}
         />
       </Box>
-    </div>
+    </Box>
   </Box>
 )
 
