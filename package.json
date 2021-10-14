@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@welcome-ui/box": "^3.0.0",
     "@welcome-ui/button": "^3.4.3",
     "@welcome-ui/core": "^3.5.0",
     "@xstyled/styled-components": "^2.2.3",

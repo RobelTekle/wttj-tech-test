@@ -389,6 +389,11 @@
     "@typescript-eslint/types" "4.33.0"
     eslint-visitor-keys "^2.0.0"
 
+"@welcome-ui/box@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/@welcome-ui/box/-/box-3.0.0.tgz#6062e107dd66aa85055233ec06f345eea1d66658"
+  integrity sha512-XH0GvNR70BUgZFu0I7VIkfZ/KMV7faIjB3xEaaj+LD7c8GO2TBWOIl83fkjPddckAerPb4GhRovOUkFfVvCVkw==
+
 "@welcome-ui/button@^3.4.3":
   version "3.4.3"
   resolved "https://registry.npmjs.org/@welcome-ui/button/-/button-3.4.3.tgz#6995250b23de45b0b23f65e0ca5a92bc44fcadbc"
