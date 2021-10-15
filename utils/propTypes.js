@@ -2,7 +2,7 @@ import {
   shape, arrayOf, string, number,
 } from 'prop-types'
 
-export const JOBS = arrayOf(shape({
+export const JOB = shape({
   id: number,
   name: string,
   description: string,
@@ -18,7 +18,9 @@ export const JOBS = arrayOf(shape({
     url: string,
   })),
 
-}))
+})
+
+export const JOBS = arrayOf(JOB)
 
 export const DATA = shape({
   jobs: JOBS,
