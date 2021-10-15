@@ -9,21 +9,24 @@ const JobsList = ({ jobs, selectedGroupOpt }) => {
   const isGrouped = !!selectedGroupOpt?.value
 
   return (
-    <Box
-      maxWidth={1000}
-      mt={0}
-      mb={0}
-      ml="auto"
-      mr="auto"
-      p="md"
-    >
-      {
+    <Box backgroundColor="nude.100">
+      <Box
+        maxWidth={1000}
+        mt={0}
+        mb={0}
+        ml="auto"
+        mr="auto"
+        p="md"
+        pb="3xl"
+      >
+        {
       isGrouped ? (
         <GroupedList jobs={jobs} groupBy={selectedGroupOpt.value} />
       ) : (
         <FlatList jobs={jobs} />
       )
     }
+      </Box>
     </Box>
   )
 }

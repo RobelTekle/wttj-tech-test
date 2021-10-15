@@ -15,7 +15,7 @@ const Filters = ({
   groupOptions,
   onChangeGroup,
 }) => (
-  <Box p="xl" backgroundColor="light.800">
+  <Box p="xl" backgroundColor="nude.200">
     <Box
       display="flex"
       justifyContent="center"

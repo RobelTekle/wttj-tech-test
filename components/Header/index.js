@@ -7,6 +7,7 @@ const Header = () => (
     justifyContent="center"
     alignItems="center"
     p={{ xs: 'xs', md: 'md', lg: 'xl' }}
+    backgroundColor="light.900"
   >
     <Image src="/wttj.svg" width={165} height={53} />
   </Box>

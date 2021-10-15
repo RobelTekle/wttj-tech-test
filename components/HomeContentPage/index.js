@@ -1,3 +1,4 @@
+import { Box } from '@welcome-ui/box'
 import Header from '../Header'
 import Filters from '../Filters'
 import JobsList from '../JobsList'
@@ -16,14 +17,16 @@ const HomeContentPage = ({ data }) => {
 
   return (
     <>
-      <Header />
-      <Filters
-        search={search}
-        onChangeSearch={onChangeSearch}
-        selectedGroupOpt={selectedGroupOpt}
-        groupOptions={groupOptions}
-        onChangeGroup={onChangeGroup}
-      />
+      <Box position="sticky" top={0}>
+        <Header />
+        <Filters
+          search={search}
+          onChangeSearch={onChangeSearch}
+          selectedGroupOpt={selectedGroupOpt}
+          groupOptions={groupOptions}
+          onChangeGroup={onChangeGroup}
+        />
+      </Box>
       <JobsList
         jobs={jobs}
         selectedGroupOpt={selectedGroupOpt}
