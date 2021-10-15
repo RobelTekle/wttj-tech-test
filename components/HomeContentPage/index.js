@@ -17,7 +17,7 @@ const HomeContentPage = ({ data }) => {
 
   return (
     <>
-      <Box position="sticky" top={0}>
+      <Box position="sticky" top={0} zIndex="1">
         <Header />
         <Filters
           search={search}

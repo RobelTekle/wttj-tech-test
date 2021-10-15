@@ -544,6 +544,18 @@
     "@welcome-ui/utils" "^3.4.3"
     "@welcome-ui/variant-icon" "^3.4.3"
 
+"@welcome-ui/modal@^3.8.4":
+  version "3.8.4"
+  resolved "https://registry.npmjs.org/@welcome-ui/modal/-/modal-3.8.4.tgz#74543ffa732719293a7dbd806c13a9afadbaf693"
+  integrity sha512-qUGeC6Dj/p3XBv1qiPGxe6Ho3UPSOLjXsxGZrhsAU3JT8rp6ktHECVjF28xN+dpBuxG52w17IJbmIx+6yYWIFQ==
+  dependencies:
+    "@welcome-ui/box" "^3.0.0"
+    "@welcome-ui/clear-button" "^3.8.4"
+    "@welcome-ui/shape" "^3.4.3"
+    "@welcome-ui/text" "^3.1.1"
+    "@welcome-ui/utils" "^3.4.3"
+    reakit "^1.3.6"
+
 "@welcome-ui/select@^3.9.0":
   version "3.9.0"
   resolved "https://registry.npmjs.org/@welcome-ui/select/-/select-3.9.0.tgz#63b36fb9cf619e6ae06aacd8806595cb9bec68b1"
@@ -556,6 +568,14 @@
     "@welcome-ui/utils" "^3.4.3"
     downshift "^6.1.0"
     match-sorter "=3.1.1"
+
+"@welcome-ui/shape@^3.4.3":
+  version "3.4.3"
+  resolved "https://registry.npmjs.org/@welcome-ui/shape/-/shape-3.4.3.tgz#29210659ac374c139294ce7ed1a87596e02ca457"
+  integrity sha512-wNY24nXy+9E0wUo071lG37HzWGsW6KviHhJxRaSE1pXLTzu8mcLR0NSrpJHa0ngRc0scq+rTAZ7yHVFeT7B5Jg==
+  dependencies:
+    "@welcome-ui/system" "^3.0.0"
+    "@welcome-ui/utils" "^3.4.3"
 
 "@welcome-ui/system@^3.0.0":
   version "3.0.0"
