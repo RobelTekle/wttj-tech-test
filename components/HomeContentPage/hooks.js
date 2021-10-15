@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { FILTER_GROUP_OPTIONS } from './constants'
+import { FILTER_GROUP_OPTIONS } from '../../utils/constants'
 
 export const useSearch = (initValue = '') => {
   const [search, setSearch] = useState(initValue)

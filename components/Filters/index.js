@@ -5,12 +5,15 @@ import { SearchIcon } from '@welcome-ui/icons.search'
 import { Text } from '@welcome-ui/text'
 import { Select } from '@welcome-ui/select'
 
-import {
-  func, string, shape, arrayOf,
-} from 'prop-types'
+import { func, string, arrayOf } from 'prop-types'
+import { GROUP_OPT } from '../../utils/propTypes'
 
 const Filters = ({
-  onChangeSearch, search, selectedGroupOpt, groupOptions, onChangeGroup,
+  search,
+  onChangeSearch,
+  selectedGroupOpt,
+  groupOptions,
+  onChangeGroup,
 }) => (
   <Box p="xl" backgroundColor="light.800">
     <Box
@@ -42,6 +45,7 @@ const Filters = ({
       </Box>
       <Box flexGrow={1}>
         <Select
+          id="group"
           value={`Group by : ${selectedGroupOpt.label}`}
           placeholder="Group By"
           type="radio"
@@ -54,10 +58,10 @@ const Filters = ({
 )
 
 Filters.propTypes = {
-  onChangeSearch: func.isRequired,
   search: string.isRequired,
-  selectedGroupOpt: shape({ label: string, value: string }).isRequired,
-  groupOptions: arrayOf(shape({ label: string, value: string })).isRequired,
+  onChangeSearch: func.isRequired,
+  selectedGroupOpt: GROUP_OPT.isRequired,
+  groupOptions: arrayOf(GROUP_OPT).isRequired,
   onChangeGroup: func.isRequired,
 }
 

@@ -12,23 +12,23 @@ const HomeContentPage = ({ data }) => {
 
   const { selectedGroupOpt, groupOptions, onChangeGroup } = useGroupBy()
 
-  const d = filterByText(search, data?.jobs)
-  console.log(d)
+  const jobs = filterByText(search, data?.jobs)
 
   return (
-    <div>
-      <>
-        <Header />
-        <Filters
-          search={search}
-          onChangeSearch={onChangeSearch}
-          selectedGroupOpt={selectedGroupOpt}
-          groupOptions={groupOptions}
-          onChangeGroup={onChangeGroup}
-        />
-        <JobsList />
-      </>
-    </div>
+    <>
+      <Header />
+      <Filters
+        search={search}
+        onChangeSearch={onChangeSearch}
+        selectedGroupOpt={selectedGroupOpt}
+        groupOptions={groupOptions}
+        onChangeGroup={onChangeGroup}
+      />
+      <JobsList
+        jobs={jobs}
+        selectedGroupOpt={selectedGroupOpt}
+      />
+    </>
   )
 }
 

@@ -1,7 +1,40 @@
-const JobsList = () => (
-  <div>
-    Jobs List
-  </div>
-)
+import { Box } from '@welcome-ui/box'
+
+import FlatList from './FlatList'
+import GroupedList from './GroupedList'
+
+import { JOBS, GROUP_OPT } from '../../utils/propTypes'
+
+const JobsList = ({ jobs, selectedGroupOpt }) => {
+  const isGrouped = !!selectedGroupOpt?.value
+
+  return (
+    <Box
+      maxWidth={1000}
+      mt={0}
+      mb={0}
+      ml="auto"
+      mr="auto"
+      p="md"
+    >
+      {
+      isGrouped ? (
+        <GroupedList jobs={jobs} groupBy={selectedGroupOpt.value} />
+      ) : (
+        <FlatList jobs={jobs} />
+      )
+    }
+    </Box>
+  )
+}
+
+JobsList.defaultProps = {
+  jobs: [],
+}
+
+JobsList.propTypes = {
+  jobs: JOBS,
+  selectedGroupOpt: GROUP_OPT.isRequired,
+}
 
 export default JobsList
