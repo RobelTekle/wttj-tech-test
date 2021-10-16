@@ -27,51 +27,56 @@ const JobModal = ({ job }) => {
         See More
       </Modal.Trigger>
       <Modal {...modal} ariaLabel="Job description">
-        <Modal.Title>
-          {job.name}
-        </Modal.Title>
         <Modal.Content>
-          <Box pb="md">
-            <InfoList>
-              <InfoListItem>
-                <Box mr="xs" display="flex">
-                  <ContractIcon />
-                </Box>
-                <Text variant="body2">{job.contract_type.en}</Text>
-              </InfoListItem>
-              <InfoListItem>
-                <Box mr="xs" display="flex">
-                  <LocationIcon />
-                </Box>
-                <Text variant="body2">{job.office.name}</Text>
-              </InfoListItem>
-              <InfoListItem>
-                <Box mr="xs" display="flex">
-                  <DateIcon />
-                </Box>
-                <Text variant="body2">
-                  {formatDistanceToNow(
-                    new Date(job.published_at), { addSuffix: true },
-                  )}
+          <Box>
+            <Box mb="md">
+              <Text variant="h3">{job.name}</Text>
+            </Box>
+            <Box pb="md">
+              <InfoList>
+                <InfoListItem>
+                  <Box mr="xs" display="flex">
+                    <ContractIcon />
+                  </Box>
+                  <Text variant="body2">{job.contract_type.en}</Text>
+                </InfoListItem>
+                <InfoListItem>
+                  <Box mr="xs" display="flex">
+                    <LocationIcon />
+                  </Box>
+                  <Text variant="body2">{job.office.name}</Text>
+                </InfoListItem>
+                <InfoListItem>
+                  <Box mr="xs" display="flex">
+                    <DateIcon />
+                  </Box>
+                  <Text variant="body2">
+                    {formatDistanceToNow(
+                      new Date(job.published_at), { addSuffix: true },
+                    )}
 
-                </Text>
-              </InfoListItem>
-            </InfoList>
+                  </Text>
+                </InfoListItem>
+              </InfoList>
+            </Box>
           </Box>
-          <ModalContentSection
-            title="Description"
-            content={job.description}
-          />
-          <ModalContentSection
-            title="Profile"
-            content={job.profile}
-          />
-          <ModalContentSection
-            title="Recruitment Process"
-            content={job.recruitment_process}
-          />
+          {job.description && (
+            <ModalContentSection
+              title="Description"
+              content={job.description}
+            />)}
+          {job.profile && (
+            <ModalContentSection
+              title="Profile"
+              content={job.profile}
+            />)}
+          {job.recruitment_process && (
+            <ModalContentSection
+              title="Recruitment Process"
+              content={job.recruitment_process}
+            />)}
         </Modal.Content>
-        <Modal.Footer>
+        <Modal.Footer minHeight="70px">
           <Box
             display="flex"
             justifyContent="end"

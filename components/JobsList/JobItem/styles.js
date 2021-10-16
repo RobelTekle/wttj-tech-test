@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Modal, useModalState } from '@welcome-ui/modal'
 import { Box } from '@welcome-ui/box'
 
 export const InfoList = styled.ul`
