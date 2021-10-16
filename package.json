@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@welcome-ui/box": "^3.0.0",
+    "@welcome-ui/button": "^3.4.3",
     "@welcome-ui/core": "^3.5.0",
     "@welcome-ui/icons.contract": "^3.4.0",
     "@welcome-ui/icons.date": "^3.0.0",

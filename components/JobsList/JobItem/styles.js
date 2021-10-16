@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Modal, useModalState } from '@welcome-ui/modal'
 import { Box } from '@welcome-ui/box'
 
 export const InfoList = styled.ul`
@@ -14,7 +15,7 @@ export const InfoListItem = styled.li`
   align-items: center;
 `
 
-export const SeeMore = styled.h4`
+export const SeeMore = styled.h4.attrs(() => ({ role: 'button' }))`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.primary[500]};
   :hover {
@@ -33,5 +34,27 @@ export const StyledBox = styled(Box)`
   @media(max-width: ${({ theme }) => theme.screens.sm}px) {
     grid-template-columns: 1fr;
     row-gap: ${({ theme }) => theme.space.md};
+  }
+`
+
+export const AugmentedText = styled.div`
+  p {
+    text-align: justify;
+  }
+  p, ul {
+    margin-bottom: 16px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.primary[500]};
+    text-decoration: underline;
+    font-weight: bold;
+    :hover {
+      color: ${({ theme }) => theme.colors.primary[700]};
+    }
   }
 `

@@ -1,9 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Modal, useModalState } from '@welcome-ui/modal'
+import { Button } from '@welcome-ui/button'
+import { Box } from '@welcome-ui/box'
+import { Text } from '@welcome-ui/text'
+import { ContractIcon } from '@welcome-ui/icons.contract'
+import { LocationIcon } from '@welcome-ui/icons.location'
+import { DateIcon } from '@welcome-ui/icons.date'
 
-import { SeeMore } from './styles'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
+import ModalContentSection from './ModalContentSection'
+
+import {
+  SeeMore, InfoList, InfoListItem,
+} from './styles'
 
 import { JOB } from '../../../utils/propTypes'
+import { getJobLink } from '../../../utils/dataManipulation'
 
 const JobModal = ({ job }) => {
   const modal = useModalState()
@@ -14,17 +27,65 @@ const JobModal = ({ job }) => {
         See More
       </Modal.Trigger>
       <Modal {...modal} ariaLabel="Job description">
+        <Modal.Title>
+          {job.name}
+        </Modal.Title>
         <Modal.Content>
-          Praesent sit amet quam ac velit faucibus dapibus. Quisque sapien ligula, rutrum quis
-          aliquam nec, convallis sit amet erat. Mauris auctor blandit porta. In imperdiet rutrum
-          nunc. Integer suscipit sodales ex, ut lobortis orci rutrum id. Vestibulum scelerisque,
-          felis ut sollicitudin elementum, dolor nibh faucibus orci, eu aliquet felis diam sed
-          eros. Donec eget sapien lacinia, viverra felis in, placerat urna. Vestibulum sed viverra
-          orci. Donec id tellus eget dui porta lobortis ac eu metus. Praesent id ultricies odio.
-          In hac habitasse platea dictumst. Sed lorem lacus, hendrerit non sodales id, consectetur
-          quis magna. Nullam non lacinia risus, ut varius est. Nam nec pulvinar tellus, eu
-          ultrices elit. Cras tincidunt et purus eu condimentum. Nunc vitae consequat nibh.
+          <Box pb="md">
+            <InfoList>
+              <InfoListItem>
+                <Box mr="xs" display="flex">
+                  <ContractIcon />
+                </Box>
+                <Text variant="body2">{job.contract_type.en}</Text>
+              </InfoListItem>
+              <InfoListItem>
+                <Box mr="xs" display="flex">
+                  <LocationIcon />
+                </Box>
+                <Text variant="body2">{job.office.name}</Text>
+              </InfoListItem>
+              <InfoListItem>
+                <Box mr="xs" display="flex">
+                  <DateIcon />
+                </Box>
+                <Text variant="body2">
+                  {formatDistanceToNow(
+                    new Date(job.published_at), { addSuffix: true },
+                  )}
+
+                </Text>
+              </InfoListItem>
+            </InfoList>
+          </Box>
+          <ModalContentSection
+            title="Description"
+            content={job.description}
+          />
+          <ModalContentSection
+            title="Profile"
+            content={job.profile}
+          />
+          <ModalContentSection
+            title="Recruitment Process"
+            content={job.recruitment_process}
+          />
         </Modal.Content>
+        <Modal.Footer>
+          <Box
+            display="flex"
+            justifyContent="end"
+          >
+            <Button
+              as="a"
+              target="_blank"
+              href={getJobLink(job)}
+              disabled={!getJobLink(job)}
+            >
+              APPLY
+            </Button>
+          </Box>
+        </Modal.Footer>
       </Modal>
     </>
   )

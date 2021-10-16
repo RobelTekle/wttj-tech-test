@@ -46,7 +46,7 @@ const JobItem = ({ job }) => (
             </Box>
             <Text variant="body2">
               {formatDistanceToNow(
-                new Date(job.published_at),
+                new Date(job.published_at), { addSuffix: true },
               )}
 
             </Text>

@@ -31,3 +31,8 @@ export const groupJobsBy = (groupValue, jobs) => {
 
   return Object.entries(map)
 }
+
+export const getJobLink = job => job
+  ?.websites_urls
+  ?.find(({ website_reference: ref }) => ref === 'wttj_fr')
+  ?.url || null
