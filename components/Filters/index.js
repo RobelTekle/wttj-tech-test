@@ -21,7 +21,13 @@ const Filters = ({
       justifyContent="center"
       alignItems="center"
     >
-      <Text variant="h4">Our Job Opportunities</Text>
+      <Text
+        data-testid="home-page-title"
+        variant="h4"
+      >
+        Our Job Opportunities
+
+      </Text>
     </Box>
     <Box
       display="flex"
@@ -41,6 +47,7 @@ const Filters = ({
           icon={<SearchIcon />}
           onChange={onChangeSearch}
           value={search}
+          data-testid="job-search-input"
         />
       </Box>
       <Box flexGrow={1}>
