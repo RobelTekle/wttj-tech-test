@@ -11,7 +11,7 @@ const GroupedList = ({ jobs, groupBy }) => {
   const data = groupJobsBy(groupBy, jobs)
 
   return (
-    <>
+    <div data-testid="grouped-job-list-container">
       {
         data.map(([groupName, jobList]) => (
           <div key={groupName}>
@@ -24,7 +24,7 @@ const GroupedList = ({ jobs, groupBy }) => {
           </div>
         ))
       }
-    </>
+    </div>
   )
 }
 
