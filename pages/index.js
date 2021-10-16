@@ -7,7 +7,6 @@ import HomeContentPage from '../components/HomeContentPage'
 import HomePageMetadata from '../components/HomePageMetadata'
 
 export default function Home({ data, error }) {
-  // TODO: update style and pass a Retry function to fetch client side
   if (error) {
     return (
       <>
