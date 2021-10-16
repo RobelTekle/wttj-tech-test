@@ -9,7 +9,12 @@ const JobsList = ({ jobs, selectedGroupOpt }) => {
   const isGrouped = !!selectedGroupOpt?.value
 
   return (
-    <Box backgroundColor="nude.100" display="flex" justifyContent="center">
+    <Box
+      backgroundColor="nude.100"
+      display="flex"
+      justifyContent="center"
+      minHeight="100vh"
+    >
       <Box
         maxWidth={1000}
         mt={0}
