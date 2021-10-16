@@ -52,7 +52,7 @@ const Filters = ({
       </Box>
       <Box flexGrow={1}>
         <Select
-          id="group"
+          id="group-jobs-by"
           value={`Group by : ${selectedGroupOpt.label}`}
           placeholder="Group By"
           type="radio"
