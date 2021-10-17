@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import userEvent from '@testing-library/user-event'
-import { render, screen } from '@testing-library/react'
+import {
+  render, screen, waitFor, within,
+} from '@testing-library/react'
 import { createTheme, WuiProvider } from '@welcome-ui/core'
 import Home from '../../pages/index'
 
-import jobs from '../../___mock___/jobs.json'
+import data from '../../___mock___/jobs.json'
 import { FILTER_GROUP_OPTIONS, SECTOR, NONE } from '../../utils/constants'
+import { getJobLink } from '../../utils/dataManipulation'
 
 import { colors } from '../../styles/colors'
 
@@ -34,7 +37,7 @@ describe('Home Page tests', () => {
   it('render Title on Home Page ', () => {
     render(
       <ThemeProvider>
-        <Home data={jobs} error={false} />
+        <Home data={data} error={false} />
       </ThemeProvider>,
     )
 
@@ -45,7 +48,7 @@ describe('Home Page tests', () => {
   it('render Search', () => {
     render(
       <ThemeProvider>
-        <Home data={jobs} error={false} />
+        <Home data={data} error={false} />
       </ThemeProvider>,
     )
 
@@ -56,7 +59,7 @@ describe('Home Page tests', () => {
   it('render Search with Placeholder', () => {
     render(
       <ThemeProvider>
-        <Home data={jobs} error={false} />
+        <Home data={data} error={false} />
       </ThemeProvider>,
     )
 
@@ -68,7 +71,7 @@ describe('Home Page tests', () => {
   it('render GroupBy Select', () => {
     const dom = render(
       <ThemeProvider>
-        <Home data={jobs} error={false} />
+        <Home data={data} error={false} />
       </ThemeProvider>,
     )
 
@@ -81,7 +84,7 @@ describe('Home Page tests', () => {
   it('GroupBy Select default value', () => {
     const dom = render(
       <ThemeProvider>
-        <Home data={jobs} error={false} />
+        <Home data={data} error={false} />
       </ThemeProvider>,
     )
 
@@ -95,7 +98,7 @@ describe('Home Page tests', () => {
   it('Jobs are grouped by default', () => {
     render(
       <ThemeProvider>
-        <Home data={jobs} error={false} />
+        <Home data={data} error={false} />
       </ThemeProvider>,
     )
 
@@ -108,7 +111,7 @@ describe('Home Page tests', () => {
   it('With None option jobs should not be grouped', () => {
     const dom = render(
       <ThemeProvider>
-        <Home data={jobs} error={false} />
+        <Home data={data} error={false} />
       </ThemeProvider>,
     )
 
@@ -125,5 +128,52 @@ describe('Home Page tests', () => {
       'flat-job-list-container',
     )
     expect(groupedListContainer).toBeInTheDocument()
+  })
+
+  it('Job modal hidden in the DOM', () => {
+    render(
+      <ThemeProvider>
+        <Home data={data} error={false} />
+      </ThemeProvider>,
+    )
+
+    const job = data.jobs[0]
+    const jobModal = screen.getByTestId(job.id)
+    expect(jobModal).toBeInTheDocument()
+    expect(jobModal).not.toBeVisible()
+  })
+
+  it('Show Job Modal', async () => {
+    render(
+      <ThemeProvider>
+        <Home data={data} error={false} />
+      </ThemeProvider>,
+    )
+
+    const job = data.jobs[0]
+    const jobModal = screen.getByTestId(job.id)
+    const modalTrigger = screen.getByTestId(`trigger-${job.id}`)
+
+    userEvent.click(modalTrigger)
+
+    await waitFor(() => {
+      expect(jobModal).toBeVisible()
+    })
+  })
+
+  it('Job Modal should have Apply button with link', () => {
+    render(
+      <ThemeProvider>
+        <Home data={data} error={false} />
+      </ThemeProvider>,
+    )
+
+    const jobWithLink = data.jobs.find(j => j?.websites_urls?.length > 0)
+    const jobLink = getJobLink(jobWithLink)
+    const buttonWithExternalLink = screen.getByTestId(
+      `button-link-${jobWithLink.id}`,
+    )
+    const link = within(buttonWithExternalLink).getByText('APPLY')
+    expect(link).toHaveAttribute('href', jobLink)
   })
 })
