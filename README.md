@@ -1,34 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sur les choix techniques
+### Pourquoi Next.js
+Au début du projet j'ai pris en consideration 3 starter kit: CRA, Gatsby et Nextjs. La simplicité du projet (une page et une modal) et le fait de ne pas avoir besoin de fetcher des données côté client ont exclu immediatement CRA. Mon choix c'est donc reduit à Gatsby ou Netx.js, qui en plus se pretent très bien à un projet basé sur des pages. Je connais pas la nature des données de l'api que j'ai pu utiliser (mock ou données dynamiques), mais j'ai préféré les traitrer comme des vrai données, pour avoir une resultat le plus possible ressemblante à une vrai application. J'ai donc choisi du utiliser du SSR. Gatsby ne gère que le static site generation (SSG) ou le fetch côté client, chose qui m'a amené à choisir Next.js.
 
-## Getting Started
+### Pourquoi JavaScript et pas TypeScript
+C'est peut-être le choix technique qui m'a interrogé le plus. Au début je ne me suis même pas posé la question, c'était évident que j'aurais utilisé TypeScript, sauf que quand je me suis plonché sur le projet il y a deux points que m'ont poussé à choisir JavaScript:
 
-First, run the development server:
+- Je n'avais pas à disposition le typage de donnés retournée par l'api. Une possible solution aurait été de générer le typage à partir du JSON. Le problème avec cette solution est que je ne connaissais pas quel `field` été required ou pas. Pour cette solution j'aurais donc du rendre tous le `fields` de données `nullable`. Chose que réduit fortement l'intérêt d'utiliser TS puisque j'aurais quand même du checker la presence de chaque field côté code comme pour du JS. Cette solution m'aurais principalement aidé à éviter des erreur de frappe.
+- La library `@welcome-ui` utilise internament les `prop-types`. Dans ce cas aussi j'aurais pas eu à disposition le typage pour utiliser les components. Une première solution aurais était de déclarer la library dans un fichier `d.ts` à la racine du projet. Mais pour cette solution soit j'aurais un `any` comme typage de components, soit j'aurais dû réecrire les props acceptés pour chaque component.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Dans ce cas je pense que les avantages apportés par TypeScript n'étaient pas si intéressant.
