@@ -23,11 +23,11 @@ const JobModal = ({ job }) => {
 
   return (
     <>
-      <Modal.Trigger as={SeeMore} {...modal}>
+      <Modal.Trigger as={SeeMore} {...modal} data-testid={`trigger-${job.id}`}>
         See More
       </Modal.Trigger>
       <Modal {...modal} ariaLabel="Job description">
-        <Modal.Content>
+        <Modal.Content data-testid={job.id}>
           <Box>
             <Box mb="md">
               <Text variant="h3">{job.name}</Text>
@@ -80,6 +80,7 @@ const JobModal = ({ job }) => {
           <Box
             display="flex"
             justifyContent="end"
+            data-testid={`button-link-${job.id}`}
           >
             <Button
               as="a"

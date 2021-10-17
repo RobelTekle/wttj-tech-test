@@ -12,6 +12,7 @@ const ErrorPage = () => (
           textAlign="center"
           variant="h3"
           color="danger.200"
+          data-testid="home-error-message"
         >
           Ooops... an error occurred
         </Text>

@@ -4,7 +4,7 @@ import JobItem from './JobItem'
 import { JOBS } from '../../utils/propTypes'
 
 const FlatList = ({ jobs }) => (
-  <Box pt="md">
+  <Box pt="md" data-testid="flat-job-list-container">
     {
       jobs.map(job => (
         <JobItem key={job.id} job={job} />
